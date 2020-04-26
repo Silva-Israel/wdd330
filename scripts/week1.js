@@ -6,7 +6,3 @@ const toggleNotes = () => {
       x.style.display = "none";
     }
   }
-
-  async function toggleExercises() {
-    exercise1.innerHTML = await(await fetch('../week1/story_editor.html')).text();
-  }

@@ -1,13 +1,10 @@
 // Function to toggle my notes for the week
-const toggleNotes = () => {
-    let x = document.getElementById("notesWeek2");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
+const toggleMenu = () => {
+    document.querySelector('#navigation').classList.toggle('show');
   }
-
+  
+  document.querySelector('#menu').addEventListener('click', toggleMenu);
+  
 
 // Functions for the Team Activity
 function getNum(numId) {

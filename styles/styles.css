@@ -89,6 +89,16 @@ ul li a {
     text-decoration: none;
 }
 
+footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    color: white;
+    background-color: gray;
+    text-align: center; 
+}
+
 /* Class selectors */
 .show li {
     display: block;

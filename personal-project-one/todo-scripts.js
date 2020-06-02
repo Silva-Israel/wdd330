@@ -1,5 +1,15 @@
 import { Task } from './task.js';
 
+// Filter tasks by active/completed
+function filter() {
+var fil = document.querySelector('ul');
+    if (fil.target.tagName === 'LI') {
+        if (fil.target.classList.toggle('checked')) {
+            fil.style.display = 'none';
+        }
+    }
+}
+
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("li");
 var i;
@@ -29,52 +39,36 @@ list.addEventListener('click', function (ev) {
     }
 }, false);
 
-document.querySelector('#add-task').addEventListener('click', saveTask);
+document.querySelector('#add-task').addEventListener('click', saveLocal);
 
-function saveTask(event) {
+function saveLocal(event) {
     let id = new Date().valueOf();
-    let taskItem = document.getElementById('myInput').value;
+    let task = document.getElementById('myInput').value;
 
-    let task = new Task(id, taskItem);
+    let taskList = new Task(id, task);
     let tasks = [];
 
     if (localStorage.getItem('tasks')) {
         tasks = JSON.parse(localStorage.getItem('tasks'));
     }
 
-    tasks.push(task);
+    tasks.push(taskList);
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
 
-    addTask();
-    //newElement();
+    newElement();
 
     event.preventDefault();
 }
 
 // Create a new list item when clicking on the "Add" button
-function addTask() {
-    let tasks = JSON.parse(localStorage.getItem('tasks'));
-    tasks.forEach(
-        task => {
-            var li = document.createElement("LI");
-            var inputValue = addTask();
-            var t = document.createTextNode(inputValue);
-            li.appendChild(t);
-            document.getElementById('myUL').appendChild(li);
-        }
-    )
-}
-
 function newElement() {
     var li = document.createElement("LI");
-    var inputValue = addTask();
+    var inputValue = JSON.parse(localStorage.getItem('tasks'));
 
-    var t = document.createTextNode(inputValue);
+    let t = document.createTextNode(inputValue.Task);
     li.appendChild(t);
-    document.getElementById('myUL').appendChild(li);
 
-    /*
     if (inputValue === '') {
         alert("Please, write something.");
     } else {
@@ -82,7 +76,7 @@ function newElement() {
     }
     document.getElementById("myInput").value = "";
     //document.getElementById("myInput").value = "";
-*/
+
     var span = document.createElement("SPAN");
     var txt = document.createTextNode("\u00D7");
     span.className = "close";

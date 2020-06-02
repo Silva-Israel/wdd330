@@ -5,13 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Izzy's ToDo List</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="todo-styles.css">
 </head>
 
 <body>
+
+
+    <div id="myDIV" class="header">
+        <h2 style="margin:5px">Izzy's ToDo List</h2>
+        <!--         <input type="text" id="myInput" placeholder="New task to add...">
+        <span onclick="newElement()" class="addBtn">&plus;</span> -->
+    </div>
+
+    <ul id="myUL">
+        
+    </ul>
+
+
+    <p id="tasks"></p>
+
+
+    <div id="filter">
+        <p id="tasks-left"></p>
+        <p id="all-tasks" onclick="filterAll()">All</p>
+        <p id="active-tasks">Active</p>
+        <p id="completed-tasks">Completed</p>
+    </div>
+
+    <div class="footer">
+        <input type="text" id="myInput" placeholder="New task to add...">
+        <span onclick="addTask()" id="add-task" class="addBtn">+</span>
+    </div>
+
+    <!-- 
     <h1>Izzy's ToDo List</h1>
-    
-    <script src="scripts.js"></script>
+    <section id="main-sec">
+        <div id="todo-item">
+            <ul id="task-list">
+                
+                
+            </ul>
+        </div>
+        <div id="header-id" class="header-class">
+            <label>Add Tasks:</label>
+            <input type="text" id="input" placeholder="Example Task...">
+            <button type="button">&#43;</button>
+        </div>
+    </section>
+ -->
+    <script src="todo-scripts.js" type="module"></script>
+    <!-- <script src="todo-scripts.js" type="module"></script> -->
 </body>
 
 </html>

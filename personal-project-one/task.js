@@ -1,7 +1,7 @@
 export class Task {
-    constructor(id, task, complete) {
-        this.Id = id;
+    constructor(task) {
+        this.Id = Date.now();
         this.Task = task;
-        this.Complete = complete;
+        this.Complete = false;
     }
 }

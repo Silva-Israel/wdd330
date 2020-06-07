@@ -1,4 +1,7 @@
+// import the Task class
 import { Task } from './task.js';
+
+document.getElementById('tasks-left').addEventListener('load', tasksLeft);
 
 // Filter tasks by active/completed
 function filter() {
@@ -56,25 +59,34 @@ function saveLocal(event) {
 
     localStorage.setItem('tasks', JSON.stringify(tasks));
 
-    newElement();
+    newElement2();
 
     event.preventDefault();
+}
+
+function newElement2() {
+    let silvas = JSON.parse(localStorage.getItem('tasks'));
+    let ul = document.getElementById('myUL');
+    silvas.forEach(
+        silva => {  
+            ul.appendChild('<li>' + silva.Task + '</li>');
+        }
+    );
 }
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
     var li = document.createElement("LI");
     var inputValue = JSON.parse(localStorage.getItem('tasks'));
-
-    let t = document.createTextNode(inputValue.Task);
+    let t = document.createTextNode(inputValue);
     li.appendChild(t);
-
+    
     if (inputValue === '') {
         alert("Please, write something.");
     } else {
         document.getElementById("myUL").appendChild(li);
     }
-    document.getElementById("myInput").value = "";
+    //document.getElementById("myInput").value = "";
     //document.getElementById("myInput").value = "";
 
     var span = document.createElement("SPAN");
@@ -92,12 +104,17 @@ function newElement() {
 
     // Get the number of tasks in my list
     let taskNumber = JSON.parse(localStorage.getItem('tasks'));
-    if (taskNumber === null) {
-        document.getElementById('tasks-left').innerHTML = 'No tasks';
-    } else if (taskNumber.length === 1) {
-        document.getElementById('tasks-left').innerHTML = taskNumber.length + ' task left';
-    } else {
-        document.getElementById('tasks-left').innerHTML = taskNumber.length + ' tasks left';
-    }
+    
+    document.getElementById('tasks-left').addEventListener('load', tasksLeft);
 
+    function tasksLeft() {
+        if (taskNumber === null) {
+            document.getElementById('tasks-left').innerHTML = 'No tasks';
+        } else if (taskNumber.length === 1) {
+            document.getElementById('tasks-left').innerHTML = taskNumber.length + ' task left';
+        } else {
+            document.getElementById('tasks-left').innerHTML = taskNumber.length + ' tasks left';
+        }
+    }
 }
+    

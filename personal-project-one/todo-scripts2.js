@@ -1,13 +1,25 @@
 import { Task } from './task.js';
 
+window.addEventListener('load', tasksLeft);
+
 let tasks = [];
 
 document.getElementById('myTasks').addEventListener('load', loadTasks);
 document.getElementById('add-task').addEventListener('click', addTask);
 
+//function addCheck() {
+    let list = document.querySelector('ul');
+    list.addEventListener('click', function (ev) {
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('checked');
+        }
+    }, false);
+//}
+
 function loadTasks() {
     if (localStorage.tasks) {
-        tasks = JSON.parse(localStorage.tasks);
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+        //tasks = JSON.parse(localStorage.tasks);
         
         showTasks();
     }
@@ -19,29 +31,46 @@ function showTasks() {
     if (tasks.length > 0) {
         tasks.forEach(
             task => {
-                document.getElementById('myTasks').innerHTML +=
-                `<div>
-                    <input type="checkbox" id="${task.Id}">
-                    ${task.Task}
-                </div>`;
+                let container = document.querySelector('ul');
+                let list = document.createElement('LI');
+                list.innerHTML = task.Task;
+                container.appendChild(list);
 
-                let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-                checkboxes.forEach(
-                    checkbox => {
-                        checkbox.addEventListener('click', toggleTask);
-                    }
-                );
+                //addCheck();
             }
         );
     }
 }
 
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+/*
+function addClose() {
+    let list = document.querySelector('ul');
+    list.addEventListener('click', function (ev) {
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('checked');
+        }
+    }, false);
+}
+*/
+
+// 
 function toggleTask() {
     let checked = document.querySelector('section div');
     checked.classList.add('checked');
 }
 
+// Set a task to local storage
 function addTask(event) {
     let task = new Task(document.getElementById('myInput').value);
 
@@ -53,5 +82,21 @@ function addTask(event) {
 
     showTasks();
 
+    tasksLeft();
+
     event.preventDefault();
+}
+
+// Get the number of tasks left in my list
+function tasksLeft() {
+    let taskNumber = JSON.parse(localStorage.getItem('tasks'));
+    let tasksleft = document.getElementById('tasks-left');
+
+    if (taskNumber === null) {
+        tasksleft.innerHTML = 'No tasks';
+    } else if (taskNumber.length === 1) {
+        tasksleft.innerHTML = taskNumber.length + ' task left';
+    } else {
+        tasksleft.innerHTML = taskNumber.length + ' tasks left';
+    }
 }

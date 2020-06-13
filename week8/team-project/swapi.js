@@ -9,9 +9,27 @@ function nextCall() {
         .then(response => {
             response.results.forEach(
                 person => {
-                    let list = document.createElement('LI');
-                    list.innerHTML = person.name;
-                    container.appendChild(list);
+                    let li = document.createElement('LI');
+                    let linkText = document.createTextNode(person.name);
+                    li.appendChild(linkText);
+
+                    li.onclick = function showPerson() {
+                        let para = document.createElement('P');
+                        para.innerHTML = 
+                            `<strong>Name: </strong>${person.name}
+                            </br>
+                            <strong>Year of birth: </strong>${person.birth_year}
+                            </br>
+                            <strong>Height: </strong>${person.height}
+                            <br>
+                            <strong>Eye color: </strong>${person.eye_color}
+                            <br>
+                            <strong>Hair color: </strong>${person.hair_color}
+                            `;
+                        container.appendChild(para);
+                    }
+                    
+                    container.appendChild(li);
 
                     page.innerHTML = `Page ${counter - 1}`
                 }
@@ -23,15 +41,34 @@ function nextCall() {
 function personCall() {
     counter = 1;
     container.innerHTML = '';
+    
     fetch('https://swapi.dev/api/people/?page=1')
         .then(result => result.json())
         .then(response => {
             response.results.forEach(
                 person => {
-                    let list = document.createElement('LI');
-                    list.innerHTML = person.name;
-                    container.appendChild(list);
+                    let li = document.createElement('LI');
+                    let linkText = document.createTextNode(person.name);
+                    li.appendChild(linkText);
 
+                    li.onclick = function showPerson() {
+                        let para = document.createElement('P');
+                        para.innerHTML = 
+                            `<strong>Name: </strong>${person.name}
+                            </br>
+                            <strong>Year of birth: </strong>${person.birth_year}
+                            </br>
+                            <strong>Height: </strong>${person.height}
+                            <br>
+                            <strong>Eye color: </strong>${person.eye_color}
+                            <br>
+                            <strong>Hair color: </strong>${person.hair_color}
+                            `;
+                        container.appendChild(para);
+                    }
+                    
+                    container.appendChild(li);
+                     
                     page.innerHTML = `Page ${counter - 1}`
                 }
             )
@@ -46,9 +83,27 @@ function previousCall() {
         .then(response => {
             response.results.forEach(
                 person => {
-                    let list = document.createElement('LI');
-                    list.innerHTML = person.name;
-                    container.appendChild(list);
+                    let li = document.createElement('LI');
+                    let linkText = document.createTextNode(person.name);
+                    li.appendChild(linkText);
+
+                    li.onclick = function showPerson() {
+                        let para = document.createElement('P');
+                        para.innerHTML = 
+                            `<strong>Name: </strong>${person.name}
+                            </br>
+                            <strong>Year of birth: </strong>${person.birth_year}
+                            </br>
+                            <strong>Height: </strong>${person.height}
+                            <br>
+                            <strong>Eye color: </strong>${person.eye_color}
+                            <br>
+                            <strong>Hair color: </strong>${person.hair_color}
+                            `;
+                        container.appendChild(para);
+                    }
+                    
+                    container.appendChild(li);
 
                     page.innerHTML = ` Page ${counter - 1}`
                 }
@@ -64,9 +119,9 @@ function showPerson() {
         .then(response => {
             response.results.forEach(
                 person => {
-                    let link = document.createElement('A');
-                    link.innerHTML = person.results;
-                    container2.appendChild(link);
+                    let para = document.createElement('P');
+                    para.innerHTML = person.name;
+                    container2.appendChild(para);
                 }
             )
         })

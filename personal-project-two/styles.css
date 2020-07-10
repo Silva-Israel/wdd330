@@ -1,0 +1,31 @@
+body {
+    
+}
+
+#ingredients-top {
+    width: 98%;
+    height: 120px;
+}
+
+#ingredients-bottom {
+    width: 98%;
+    height: 120px;
+}
+
+#directions {
+    width: 98%;
+    height: 120px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+}
+
+#search {
+    width: 100px;
+}
+
+#bottom {
+    margin-top: 40px;
+}

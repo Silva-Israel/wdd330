@@ -1,25 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+
 body {
-    
+    margin: 0;
+}
+
+main {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 15px;
+    padding-right: 15px;    
+}
+
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Berkshire Swash', cursive;
+    font-weight: 100;
+    font-size: 23pt;
+    text-align: center;
+    background-color: #1f7a91;
+    color: white;
+    height: 40px;
+    margin-top: 0;
+    padding: 10px;
 }
 
 #ingredients-top {
     width: 98%;
-    height: 120px;
+    height: 100px;
 }
 
 #ingredients-bottom {
     width: 98%;
-    height: 120px;
+    height: 100px;
 }
 
 #directions {
     width: 98%;
-    height: 120px;
+    height: 100px;
 }
 
 footer {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     position: absolute;
+    left: 0;
     bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    background-color: #633a78;
+    color: white;
 }
 
 #search {
@@ -27,5 +55,5 @@ footer {
 }
 
 #bottom {
-    margin-top: 40px;
+    margin-top: 60px;
 }

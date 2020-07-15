@@ -30,8 +30,10 @@ function search() {
     localStorageItem.forEach(
         item => {
             if (item.Ingredients.includes(searchQuery)) {
-                document.getElementById('test').innerHTML = `<a href="#">${item.Name}</a>`;
+                document.getElementById('test').innerHTML = `
+                <p>These recipes can be prepared with the ingredients you input:</p>
+                <a href="#">${item.Name}</a>`;
             }
         }
-    )
+    );
 }

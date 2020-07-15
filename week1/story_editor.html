@@ -1,6 +1,9 @@
 <!doctype html>
 <html>
+
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Story Editor</title>
   <script>
     const loadStory = () => {
@@ -19,25 +22,22 @@
       document.getElementById('story-display').innerHTML = storyHTML;
     }
   </script>
-
-  <style>
-    textarea {
-      width: 600px;
-      height: 250px;
-      background-color: lightyellow;
-    }
-  </style>
+  <link rel="stylesheet" href="../styles/week1.css">
 </head>
 
 <body>
   <h1>Story Editor</h1>
-  Story Name:<input id="story-title"></input>
-  <section>
-    <button onclick="loadStory()">Find/Edit</button>
-    <button onclick="saveStory()">Save</button>
-    <button onclick="displayStory()">Display</button>
-  </section>
-  <textarea id="story-body" placeholder="Write your story here."></textarea>
-  <section id="story-display"></section>
+  <label for="">Story Name:</label>
+  <input id="story-title"></input>
+  <div>
+    <section>
+      <button onclick="loadStory()">Find/Edit</button>
+      <button onclick="saveStory()">Save</button>
+      <button onclick="displayStory()">Display</button>
+    </section>
+    <textarea id="story-body" placeholder="Write your story here."></textarea>
+    <section id="story-display"></section>
+  </div>
 </body>
+
 </html>

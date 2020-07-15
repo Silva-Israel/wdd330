@@ -1,8 +1,3 @@
-// import the Task class
-import { Task } from './task.js';
-
-document.getElementById('tasks-left').addEventListener('load', tasksLeft);
-
 // Filter tasks by active/completed
 function filter() {
 var fil = document.querySelector('ul');
@@ -72,48 +67,4 @@ function newElement2() {
             ul.appendChild('<li>' + silva.Task + '</li>');
         }
     );
-}
-
-// Create a new list item when clicking on the "Add" button
-function newElement() {
-    var li = document.createElement("LI");
-    var inputValue = JSON.parse(localStorage.getItem('tasks'));
-    let t = document.createTextNode(inputValue);
-    li.appendChild(t);
-    
-    if (inputValue === '') {
-        alert("Please, write something.");
-    } else {
-        document.getElementById("myUL").appendChild(li);
-    }
-    //document.getElementById("myInput").value = "";
-    //document.getElementById("myInput").value = "";
-
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    li.appendChild(span);
-
-    for (i = 0; i < close.length; i++) {
-        close[i].onclick = function () {
-            var div = this.parentElement;
-            div.style.display = "none";
-        }
-    }
-
-    // Get the number of tasks in my list
-    let taskNumber = JSON.parse(localStorage.getItem('tasks'));
-    
-    document.getElementById('tasks-left').addEventListener('load', tasksLeft);
-
-    function tasksLeft() {
-        if (taskNumber === null) {
-            document.getElementById('tasks-left').innerHTML = 'No tasks';
-        } else if (taskNumber.length === 1) {
-            document.getElementById('tasks-left').innerHTML = taskNumber.length + ' task left';
-        } else {
-            document.getElementById('tasks-left').innerHTML = taskNumber.length + ' tasks left';
-        }
-    }
 }

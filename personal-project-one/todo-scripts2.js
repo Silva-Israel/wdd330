@@ -1,10 +1,10 @@
 import { Task } from './task.js';
 
 window.addEventListener('load', tasksLeft);
+window.addEventListener('load', loadTasks);
 
 let tasks = [];
 
-document.getElementById('myTasks').addEventListener('load', loadTasks);
 document.getElementById('add-task').addEventListener('click', addTask);
 
 //function addCheck() {
@@ -33,41 +33,23 @@ function showTasks() {
             task => {
                 let container = document.querySelector('ul');
                 let list = document.createElement('LI');
+                
                 list.innerHTML = task.Task;
                 container.appendChild(list);
 
-                //addCheck();
+                addCheck();
             }
         );
     }
 }
 
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-
-/*
-function addClose() {
+function addCheck() {
     let list = document.querySelector('ul');
     list.addEventListener('click', function (ev) {
         if (ev.target.tagName === 'LI') {
             ev.target.classList.toggle('checked');
         }
     }, false);
-}
-*/
-
-// 
-function toggleTask() {
-    let checked = document.querySelector('section div');
-    checked.classList.add('checked');
 }
 
 // Set a task to local storage

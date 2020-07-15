@@ -1,4 +1,8 @@
 /* HTML selectors */
+body {
+    width: 100%;
+}
+
 ul {
     list-style: none;
     margin: 0;
@@ -28,4 +32,13 @@ a {
     display: block;
 }
 
+div {
+    width: 100%;
+}
+
 /* Id selectors */
+textarea {
+    width: 80%;
+    height: 250px;
+    background-color: lightyellow;
+  }

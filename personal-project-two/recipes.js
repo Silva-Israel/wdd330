@@ -53,6 +53,10 @@ document.querySelector('#recipe-list').addEventListener('click',
                 <div>
                     <span><strong>Directions:</strong> </span>
                     <span>${recipe.Directions}</span>
+                </div>
+                <div>
+                    <span><strong>Photo:</strong> </span>
+                    <span>Coming soon...</span>
                 </div>`;
             }
         }

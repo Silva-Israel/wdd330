@@ -1,4 +1,6 @@
-import { Task } from './task.js';
+import {
+    Task
+} from './task.js';
 
 window.addEventListener('load', tasksLeft);
 window.addEventListener('load', loadTasks);
@@ -7,20 +9,18 @@ let tasks = [];
 
 document.getElementById('add-task').addEventListener('click', addTask);
 
-//function addCheck() {
-    let list = document.querySelector('ul');
-    list.addEventListener('click', function (ev) {
-        if (ev.target.tagName === 'LI') {
-            ev.target.classList.toggle('checked');
-        }
-    }, false);
-//}
+let list = document.querySelector('ul');
+list.addEventListener('click', function (ev) {
+    if (ev.target.tagName === 'LI') {
+        ev.target.classList.toggle('checked');
+    }
+}, false);
 
 function loadTasks() {
     if (localStorage.tasks) {
         tasks = JSON.parse(localStorage.getItem('tasks'));
         //tasks = JSON.parse(localStorage.tasks);
-        
+
         showTasks();
     }
 }
@@ -33,7 +33,7 @@ function showTasks() {
             task => {
                 let container = document.querySelector('ul');
                 let list = document.createElement('LI');
-                
+
                 list.innerHTML = task.Task;
                 container.appendChild(list);
 
@@ -41,6 +41,27 @@ function showTasks() {
             }
         );
     }
+}
+
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
 }
 
 function addCheck() {
@@ -67,6 +88,10 @@ function addTask(event) {
     tasksLeft();
 
     event.preventDefault();
+}
+
+function deleteTask(event) {
+    
 }
 
 // Get the number of tasks left in my list

@@ -1,15 +1,8 @@
-// Filter tasks by active/completed
-function filter() {
-var fil = document.querySelector('ul');
-    if (fil.target.tagName === 'LI') {
-        if (fil.target.classList.toggle('checked')) {
-            fil.style.display = 'none';
-        }
-    }
-}
+let tasks = [];
+
 
 // Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("li");
+var myNodelist = document.getElementsByTagName("LI");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
     var span = document.createElement("SPAN");
@@ -37,34 +30,37 @@ list.addEventListener('click', function (ev) {
     }
 }, false);
 
-document.querySelector('#add-task').addEventListener('click', saveLocal);
 
-function saveLocal(event) {
-    let id = new Date().valueOf();
-    let task = document.getElementById('myInput').value;
 
-    let taskList = new Task(id, task);
-    let tasks = [];
-
-    if (localStorage.getItem('tasks')) {
-        tasks = JSON.parse(localStorage.getItem('tasks'));
-    }
-
-    tasks.push(taskList);
-
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-
-    newElement2();
-
-    event.preventDefault();
+function saveForm() {
+    
 }
 
-function newElement2() {
-    let silvas = JSON.parse(localStorage.getItem('tasks'));
-    let ul = document.getElementById('myUL');
-    silvas.forEach(
-        silva => {  
-            ul.appendChild('<li>' + silva.Task + '</li>');
+
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+    var li = document.createElement("li");
+    var inputValue = document.getElementById("myInput").value;
+    var t = document.createTextNode(inputValue);
+    li.appendChild(t);
+    if (inputValue === '') {
+        alert("You must write something!");
+    } else {
+        document.getElementById("myUL").appendChild(li);
+    }
+    document.getElementById("myInput").value = "";
+
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    li.appendChild(span);
+
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function () {
+            var div = this.parentElement;
+            div.style.display = "none";
         }
-    );
+    }
 }

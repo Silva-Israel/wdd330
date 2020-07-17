@@ -9,29 +9,22 @@
 </head>
 
 <body>
+    <header>
+        <div id="myDIV" class="header">
+            <h2 style="margin:5px">Izzy's ToDo List</h2>
+            
+        </div>
+    </header>
 
-    <div id="myDIV" class="header">
-        <h2 style="margin:5px">Izzy's ToDo List</h2>
-    </div>
 
-    <ul id="myTasks">
+    <ul id="myUL">
 
     </ul>
-
-    <div id="filter">
-        <p id="tasks-left"></p>
-        <p id="all-tasks" onclick="filterAll()">All</p>
-        <p id="active-tasks">Active</p>
-        <p id="completed-tasks" onclick="filter()">Completed</p>
-    </div>
-
-    <div class="footer">
-        <input type="text" id="myInput" placeholder="New task to add...">
-        <span id="add-task" class="addBtn">+</span>
-    </div>
-
-    <script src="todo-scripts2.js" type="module"></script>
-    <!-- <script src="todo-scripts.js" type="module"></script> -->
+    <footer>
+        <input type="text" id="myInput" placeholder="New task">
+        <span onclick="newElement()" class="addBtn">+</span>
+    </footer>
+    <script src="todo-scripts.js"></script>
 </body>
 
 </html>

@@ -15,18 +15,50 @@ function showRecipes() {
     if (recipes.length > 0) {
         recipes.forEach(
             recipe => {
-                let container = document.getElementById('recipe-list');
-                let list = document.createElement('LI');
-                let onclick = 'onclick="showEachRecipe(); return false"';
+                //let container = document.getElementById('recipe-list');
+                //let list = document.createElement('LI');
+                
+                document.querySelector('#recipe-list').innerHTML +=
+                `<li id="${recipe.Id}">${recipe.Name}</li>`;
 
-                //list.innerHTML = `<a href="${showEachRecipe}">${recipe.Name}</a>`;
-                list.innerHTML = `<a href="#" ${onclick}>${recipe.Name}</a>`;
+                /*
+                list.innerHTML = recipe.Name;
                 container.appendChild(list);
+                */
             }
         );
     }
 }
 
+document.querySelector('#recipe-list').addEventListener('click',
+    (e) => {
+        let recipeId = parseInt(e.target.id);
+        let recipe = recipes.find(r => r.Id === recipeId);
+        
+        if (recipe) {
+            document.querySelector('#each-recipe').innerHTML = '';
+
+            for (let property in recipe) {
+                let eachRecipe = document.querySelector('#each-recipe');
+                eachRecipe.innerHTML = '';
+                eachRecipe.innerHTML =
+                `<div>
+                    <span><strong>Recipe:</strong> </span>
+                    <span>${recipe.Name}</span>
+                </div>
+                <div>
+                    <span><strong>Ingredients:</strong> </span>
+                    <span>${recipe.Ingredients}</span>
+                </div>
+                <div>
+                    <span><strong>Directions:</strong> </span>
+                    <span>${recipe.Directions}</span>
+                </div>`;
+            }
+        }
+    });
+
+/*
 function showEachRecipe() {
     let allRecipes = document.getElementById('all-recipes');
     let eachRecipe = document.getElementById('each-recipe');
@@ -39,4 +71,4 @@ function showEachRecipe() {
     node.innerHTML = `<p>${recipes.Name}</p>`;
 
     container.appendChild(node);
-}
+}*/

@@ -1,9 +1,12 @@
 let counter;
 let container = document.querySelector('ul');
 let page = document.getElementById('page');
+let para = document.createElement('P');
 
 function nextCall() {
     container.innerHTML = '';
+    para.innerHTML = '';
+
     fetch(`https://swapi.dev/api/people/?page=${counter}`)
         .then(result => result.json())
         .then(response => {
@@ -14,7 +17,7 @@ function nextCall() {
                     li.appendChild(linkText);
 
                     li.onclick = function showPerson() {
-                        let para = document.createElement('P');
+                        
                         para.innerHTML = 
                             `<strong>Name: </strong>${person.name}
                             </br>
@@ -41,6 +44,8 @@ function nextCall() {
 function personCall() {
     counter = 1;
     container.innerHTML = '';
+    para.innerHTML = '';
+
     
     fetch('https://swapi.dev/api/people/?page=1')
         .then(result => result.json())
@@ -52,7 +57,7 @@ function personCall() {
                     li.appendChild(linkText);
 
                     li.onclick = function showPerson() {
-                        let para = document.createElement('P');
+                        
                         para.innerHTML = 
                             `<strong>Name: </strong>${person.name}
                             </br>
@@ -78,6 +83,7 @@ function personCall() {
 
 function previousCall() {
     container.innerHTML = '';
+    para.innerHTML = '';
     fetch(`https://swapi.dev/api/people/?page=${counter - 2}`)
         .then(result => result.json())
         .then(response => {
@@ -88,7 +94,7 @@ function previousCall() {
                     li.appendChild(linkText);
 
                     li.onclick = function showPerson() {
-                        let para = document.createElement('P');
+                        
                         para.innerHTML = 
                             `<strong>Name: </strong>${person.name}
                             </br>
@@ -119,7 +125,7 @@ function showPerson() {
         .then(response => {
             response.results.forEach(
                 person => {
-                    let para = document.createElement('P');
+                    
                     para.innerHTML = person.name;
                     container2.appendChild(para);
                 }

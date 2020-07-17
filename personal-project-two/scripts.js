@@ -21,6 +21,10 @@ function saveForm(event) {
 
     localStorage.setItem('recipes', JSON.stringify(recipes));
 
+    document.querySelector('#recipe-name').value = '';
+    document.querySelector('#ingredients-bottom').value = '';
+    document.querySelector('#directions').value = '';
+
     event.preventDefault();
 }
 

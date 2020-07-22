@@ -53,8 +53,8 @@ li.dropdown {
     display: block;
 }
 
-body {
-    
+main {
+    margin-bottom: 60px;
 }
 
 #header {

@@ -7,9 +7,12 @@ document.querySelector('#search-bottom').addEventListener('click', saveForm);
 document.querySelector('#search-top').addEventListener('click', search);
 
 function saveForm(event) {
+    let ingredients = [];
+    let directions = [];
+
     let name = document.getElementById('recipe-name').value;
-    let ingredients = document.getElementById('ingredients-bottom').value;
-    let directions = document.getElementById('directions').value;
+    ingredients = document.getElementById('ingredients-bottom').value.split("\n");
+    directions = document.getElementById('directions').value.split("\n");
 
     let recipe = new Recipe(name, ingredients, directions)
 

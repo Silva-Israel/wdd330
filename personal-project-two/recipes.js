@@ -48,11 +48,11 @@ document.querySelector('#recipe-list').addEventListener('click',
                 </div>
                 <div>
                     <span><strong>Ingredients:</strong> </span>
-                    <span>${recipe.Ingredients}</span>
+                    <span>${recipe.Ingredients.join(', ')}</span>
                 </div>
                 <div>
                     <span><strong>Directions:</strong> </span>
-                    <span>${recipe.Directions}</span>
+                    <span>${recipe.Directions.join(', ')}</span>
                 </div>
                 <div>
                     <span><strong>Photo:</strong> </span>
@@ -61,18 +61,3 @@ document.querySelector('#recipe-list').addEventListener('click',
             }
         }
     });
-
-/*
-function showEachRecipe() {
-    let allRecipes = document.getElementById('all-recipes');
-    let eachRecipe = document.getElementById('each-recipe');
-    
-    eachRecipe.style.display = 'block';
-    allRecipes.style.display = 'none';
-
-    let container = document.getElementById('each-recipe');
-    let node = document.createElement('P');
-    node.innerHTML = `<p>${recipes.Name}</p>`;
-
-    container.appendChild(node);
-}*/
